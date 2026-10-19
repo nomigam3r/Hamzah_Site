@@ -1,110 +1,681 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Hamzah's Personal Site</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hamzah's professional portfolio showcasing hospitality, guest services, video editing, and graphic design.">
+  <title>Hamzah | Professional Portfolio</title>
 
-  <!-- Favicon Icon -->
-  <link rel="icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&amp;family=Montserrat&amp;family=Sacramento&amp;display=swap"
-    rel="stylesheet">
+  <style>
+    :root {
+      --green: #1f6b4b;
+      --dark-green: #174d37;
+      --light-green: #eaf4ed;
+      --text: #18251f;
+      --muted: #66736b;
+      --background: #fbfcfa;
+      --border: #e1e8e2;
+    }
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    * {
+      box-sizing: border-box;
+    }
 
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(1100px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(251, 252, 250, .96);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navigation {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font: 800 1.4rem "Manrope", sans-serif;
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--green);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .9rem;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: var(--green);
+    }
+
+    h1, h2, h3 {
+      font-family: "Manrope", sans-serif;
+      line-height: 1.25;
+      letter-spacing: -.03em;
+    }
+
+    .hero {
+      padding: 85px 0;
+      background: linear-gradient(135deg, #f8fbf7, #eaf4ed);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr .6fr;
+      align-items: center;
+      gap: 45px;
+    }
+
+    .eyebrow {
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      font-size: .78rem;
+      font-weight: 800;
+    }
+
+    h1 {
+      margin: 14px 0;
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+    }
+
+    h1 span {
+      color: var(--green);
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 650px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 11px 19px;
+      border: 1px solid var(--green);
+      border-radius: 9px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .button.primary {
+      background: var(--green);
+      color: white;
+    }
+
+    .button.primary:hover {
+      background: var(--dark-green);
+    }
+
+    .button.secondary {
+      color: var(--green);
+    }
+
+    .portrait {
+      background: white;
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: 0 18px 50px rgba(28, 55, 39, .08);
+    }
+
+    .portrait img {
+      width: 210px;
+      height: 210px;
+      max-width: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 7px solid var(--light-green);
+    }
+
+    section {
+      padding: 75px 0;
+    }
+
+    .alternate {
+      background: #f2f7f2;
+    }
+
+    .section-heading {
+      max-width: 700px;
+      margin-bottom: 32px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin: 8px 0 12px;
+    }
+
+    .section-heading p,
+    .muted {
+      color: var(--muted);
+    }
+
+    .grid-two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .card {
+      padding: 25px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tags li {
+      padding: 7px 12px;
+      border-radius: 20px;
+      background: var(--light-green);
+      color: var(--dark-green);
+      font-size: .9rem;
+      font-weight: 600;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 25px;
+    }
+
+    .timeline-item {
+      padding-left: 22px;
+      border-left: 3px solid #b9d9c3;
+    }
+
+    .timeline-item h3 {
+      margin: 0 0 5px;
+      font-size: 1.12rem;
+    }
+
+    .date {
+      margin: 0 0 10px;
+      color: var(--green);
+      font-weight: 700;
+      font-size: .9rem;
+    }
+
+    .timeline-item p:last-child {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .project-card {
+      padding: 23px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+    }
+
+    .project-icon {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--light-green);
+      color: var(--green);
+      font-size: 1.3rem;
+    }
+
+    .project-card h3 {
+      margin: 17px 0 8px;
+    }
+
+    .project-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .contact-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+      padding: 35px;
+      background: var(--dark-green);
+      color: white;
+      border-radius: 20px;
+    }
+
+    .contact-box h2 {
+      margin: 8px 0;
+    }
+
+    .contact-box p {
+      color: #dcece1;
+    }
+
+    .contact-box .button {
+      background: white;
+      color: var(--dark-green);
+      white-space: nowrap;
+    }
+
+    footer {
+      padding: 25px 0;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    footer a {
+      color: var(--green);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    @media (max-width: 760px) {
+      .navigation {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 15px 0;
+      }
+
+      nav {
+        gap: 10px 15px;
+      }
+
+      .hero {
+        padding: 55px 0;
+      }
+
+      .hero-grid,
+      .grid-two,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 55px 0;
+      }
+
+      .contact-box {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 25px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <div class="top-container">
 
-    <h1> I'm Hamzah.</h1>
-    <h2 id="Top-Intro">a semi-professional Video Editor <br> & Graphics Designer.</h2>
-    <img class="tree-1" src="IMAGES/palm-trees.png" height="300px" width="300px" alt="palmtrees-img">
-    <img class="mountain-img" src="IMAGES/Mountain.png" height="300px" width="600px" alt="mountain-img">
-    <img class="tree-2" src="IMAGES/palm-trees.png" height="300px" width="300px" alt="palmtrees-img">
+<header>
+  <div class="container navigation">
+    <a class="logo" href="#home">Hamzah<span>.</span></a>
+
+    <nav aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </div>
-  <div class="middle-container">
-    <div class="profile">
-      <img src="IMAGES/Hamza.png.png" height="200px" width="200px" alt="Hamzah-png">
-      <h2>Hello.</h2>
-      <p class="intro">I am a semi-professional Video Editor and Graphics Designer. I also have experties in HTML &
-        CSS.
-    </div>
-    <hr>
-    <div class="skills">
-      <div class="skill-row">
-        <h2>My Skills.</h2>
-        <img class="skill-1" src="IMAGES/skilll-sets.gif" height="270px" width="300px" alt="video-editing-png">
-        <h3>Adobe Premiere & InDesign</h3>
-        <p>I have edited talk shows, montage videos, created book covers, flyers etc.</p>
-        <h3>Adobe Photoshop & Illustration</h3>
-        <p>I have edited lot's of thumbnails and pictures, made different companies logos, vector arts etc.</p>
-      </div>
+</header>
 
-      <hr>
+<main>
 
-      <div class="skill-row">
-        <h2>My Education</h2>
-        <img class="skill-2" src="IMAGES/graduation.gif" height="270px" width="300px" alt="Study">
-        <h3>Matric and Intermediate</h3>
-        <p>Matric from I.M.S.B, G-9/1 (2014) <br>
-          I.com part-1 from I.M.C.B, H-8/4  (2015) <br>
-          I.com Part-2 from I.M.C.B, F-10/4 (2016)</p>
-        <h3>Bachelors </h3>
-        <p>B.Com from A.I.O.U, Islamabad (2020)</p>
-      </div>
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Professional Portfolio</div>
 
-      <hr>
-
-      <div class="experience-row">
-        <h2>My Experience</h2>
-        <img src="IMAGES/Experience.png" height="250px" width="300px" alt="Experience" style="margin-bottom: 30px;">
-        <h3>Class Attendant / Accountant in KIPS Academy</h3>
-        <p>In 2017, I started the job in KIPS as a class attendant and an Accountant. I have learned how to manage
-          the
-          files and paper work there. I also learned communication skills and the method of dealing with the students.
-        </p>
-        <h3>Dth News Channel </h3>
+        <h1>Hello, I'm <span>Hamzah.</span></h1>
 
         <p>
-          After KIPS, I started a Job in DTH News as a video editor. DTH News is a professional web channel of talk
-          shows. In this channel, I’ve learned to edit outdoor shows, indoor shows, chroma key, etc.
+          A hospitality and guest-services professional with a creative
+          background in video editing and graphic design. I enjoy helping
+          people, staying organized, and bringing ideas to life through
+          digital media.
         </p>
 
-        <h3>Strawberry Sports</h3>
+        <div class="buttons">
+          <a class="button primary" href="#contact">Contact Me</a>
+          <a class="button secondary" href="#experience">My Experience</a>
+        </div>
+      </div>
 
+      <div class="portrait">
+        <img
+          src="IMAGES/Hamza.png.png"
+          alt="Portrait of Hamzah"
+          onerror="this.style.display='none';"
+        >
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">About Me</div>
+        <h2>People-focused. Creative. Organized.</h2>
         <p>
-          After Job at DTH News. I started the job in Strawberry Sports. I usually edit sports content there and
-          make new designs of thumbnails and creative logos with the help of Adobe Photoshop and Illustrator. I am
-          still working there as a video editor and Graphics
-          designer.
+          My experience combines customer service, reception, administration,
+          and creative production. I bring a helpful attitude, attention to
+          detail, and a willingness to learn to every role.
         </p>
+      </div>
+
+      <div class="grid-two">
+        <article class="card">
+          <h3>What I Bring</h3>
+          <p class="muted">
+            Guest communication, reception support, organization, teamwork,
+            and creative problem-solving. My media background also helps me
+            communicate information clearly and visually.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Key Strengths</h3>
+          <ul class="tags">
+            <li>Guest Services</li>
+            <li>Reception</li>
+            <li>Administration</li>
+            <li>Video Editing</li>
+            <li>Graphic Design</li>
+            <li>Teamwork</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="alternate" id="skills">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">What I Do</div>
+        <h2>Skills & Strengths</h2>
+        <p>
+          A combination of hospitality, administrative, communication,
+          and creative skills.
+        </p>
+      </div>
+
+      <div class="grid-two">
+        <article class="card">
+          <h3>Reception & Administration</h3>
+          <ul>
+            <li>Guest check-in and check-out support</li>
+            <li>Handling guest questions and requests</li>
+            <li>Reservation and front-desk assistance</li>
+            <li>File organization and administrative support</li>
+            <li>Communication and teamwork</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Creative & Digital</h3>
+          <ul>
+            <li>Video editing for talk shows and sports content</li>
+            <li>Graphic design, thumbnails, flyers, and cover designs</li>
+            <li>Logo concepts and vector artwork</li>
+            <li>Adobe Premiere Pro, Photoshop, InDesign, and Illustrator</li>
+            <li>Basic HTML and CSS</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Career Journey</div>
+        <h2>Work Experience</h2>
+        <p>
+          Experience across hospitality, guest services, administration,
+          and media production.
+        </p>
+      </div>
+
+      <div class="timeline">
+
+        <article class="timeline-item">
+          <h3>Receptionist — A&O Hostel, Stuttgart</h3>
+          <p class="date">2025 – Present</p>
+          <p>
+            Support daily reception operations, assist guests with questions
+            and requests, help with check-in and check-out, and contribute to
+            a welcoming guest experience.
+          </p>
+        </article>
+
+        <article class="timeline-item">
+          <h3>Video Editor & Graphic Designer — Strawberry Sports</h3>
+          <p class="date">2019 – 2022</p>
+          <p>
+            Edited sports content and created thumbnails, logos, and visual
+            assets using video-editing and graphic-design tools.
+          </p>
+        </article>
+
+        <article class="timeline-item">
+          <h3>Video Editor — DTH News Channel</h3>
+          <p class="date">2018 – 2019</p>
+          <p>
+            Edited indoor and outdoor talk-show content and worked with
+            chroma-key footage for digital broadcasting.
+          </p>
+        </article>
+
+        <article class="timeline-item">
+          <h3>Class Attendant / Accountant — KIPS Academy</h3>
+          <p class="date">2017</p>
+          <p>
+            Helped manage files and paperwork, supported classroom
+            administration, and developed communication and organizational
+            skills.
+          </p>
+        </article>
 
       </div>
     </div>
+  </section>
 
-    <hr>
+  <section class="alternate" id="education">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Background</div>
+        <h2>Education & Languages</h2>
+      </div>
 
-    <div class="contact-me">
-      <h2 id="Last-Msg">Get in Touch</h2>
-      <p>Send me a feedback on my socials below</p>
+      <div class="grid-two">
+        <article class="card">
+          <h3>Education</h3>
 
-      <a class="btn" href="mailto:hamza660ti@email.com">CONTACT ME</a>
+          <div class="timeline">
+            <div class="timeline-item">
+              <h3>American Studies</h3>
+              <p class="date">University of Tübingen · 2025 – Present</p>
+            </div>
+
+            <div class="timeline-item">
+              <h3>Bachelor of Commerce (B.Com)</h3>
+              <p class="date">Allama Iqbal Open University · 2019 – 2021</p>
+            </div>
+
+            <div class="timeline-item">
+              <h3>Intermediate (I.Com)</h3>
+              <p class="date">Islamabad Model College, H-8/4 · 2014 – 2016</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Languages</h3>
+          <ul class="tags">
+            <li>Urdu — C2</li>
+            <li>English — C1</li>
+            <li>German — A2.1</li>
+          </ul>
+          <p class="muted">
+            Language levels should reflect your current proficiency.
+          </p>
+        </article>
+      </div>
     </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Selected Work</div>
+        <h2>Projects & Creative Work</h2>
+        <p>
+          Areas of work I have contributed to throughout my creative career.
+        </p>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card">
+          <div class="project-icon">▶</div>
+          <h3>Video Editing</h3>
+          <p>
+            Talk-show editing, sports content, indoor and outdoor footage,
+            and chroma-key projects.
+          </p>
+        </article>
+
+        <article class="project-card">
+          <div class="project-icon">✦</div>
+          <h3>Graphic Design</h3>
+          <p>
+            Thumbnails, flyers, book covers, logos, and visual concepts
+            for digital media.
+          </p>
+        </article>
+
+        <article class="project-card">
+          <div class="project-icon">⌘</div>
+          <h3>Web Design</h3>
+          <p>
+            Personal website development using HTML and CSS, with an interest
+            in clean and accessible layouts.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="alternate" id="contact">
+    <div class="container">
+      <div class="contact-box">
+        <div>
+          <div class="eyebrow" style="color:#bfe4ca;">Let's Connect</div>
+          <h2>Have a role or project in mind?</h2>
+          <p>
+            Contact me about work opportunities, collaborations,
+            or creative projects.
+          </p>
+        </div>
+
+        <a class="button" href="mailto:hamza660ti@email.com">
+          Email Hamzah
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-content">
+    <span>© <span id="year"></span> Hamzah. All rights reserved.</span>
+
+    <span>
+      <a href="https://www.linkedin.com/in/mr-hamzah-8581a5216"
+         target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.facebook.com/profile.php?id=100010592532276"
+         target="_blank" rel="noopener noreferrer">Facebook</a>
+      &nbsp;·&nbsp;
+      <a href="https://youtube.com/c/RockNationnhb/videos"
+         target="_blank" rel="noopener noreferrer">YouTube</a>
+    </span>
   </div>
+</footer>
 
-
-  <div class="bottom-container">
-    <a class="footer-link" href="https://www.linkedin.com/in/mr-hamzah-8581a5216"><i class="fab fa-linkedin"></i>  LinkedIn</a>
-    <a class="footer-link" href="https://www.facebook.com/profile.php?id=100010592532276"><i class="fab fa-facebook"></i>  Facebook</a>
-    <a class="footer-link" href="https://youtube.com/c/RockNationnhb/videos"><i class="fab fa-youtube"></i>  Youtube</a>
-    <p class="copyright">© 2021 Hamzah's Website. <br> All Rights Reserverd </p>
-  </div>
-
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
 </body>
+</html>
