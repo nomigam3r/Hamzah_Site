@@ -1,110 +1,894 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Hamzah's Personal Site</title>
-  <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Favicon Icon -->
-  <link rel="icon" href="favicon.ico">
+    <meta name="description" content="Hamzah's professional portfolio showcasing reception, guest services, creative media, skills, and experience.">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&amp;family=Montserrat&amp;family=Sacramento&amp;display=swap"
-    rel="stylesheet">
+    <title>Hamzah | Professional Portfolio</title>
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --background: #f7f8fa;
+            --white: #ffffff;
+            --dark: #172b35;
+            --text: #52616b;
+            --accent: #159b83;
+            --accent-light: #e0f5ef;
+            --border: #e5e9ed;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Manrope', sans-serif;
+            color: var(--dark);
+            line-height: 1.25;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: min(1100px, 90%);
+            margin: auto;
+        }
+
+        /* NAVIGATION */
+
+        header {
+            background: rgba(255, 255, 255, 0.96);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            min-height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-family: 'Manrope', sans-serif;
+            font-size: 25px;
+            font-weight: 800;
+            color: var(--dark);
+        }
+
+        .logo span,
+        .accent {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-contact {
+            background: var(--accent);
+            color: white !important;
+            padding: 10px 18px;
+            border-radius: 7px;
+        }
+
+        /* HERO */
+
+        .hero {
+            padding: 100px 0 90px;
+            background:
+                radial-gradient(circle at 90% 10%, #dff5ed 0, transparent 30%),
+                var(--white);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 68px);
+            letter-spacing: -2px;
+            margin-bottom: 18px;
+        }
+
+        .hero h2 {
+            font-size: clamp(19px, 2.5vw, 25px);
+            font-weight: 600;
+            margin-bottom: 22px;
+        }
+
+        .hero-description {
+            max-width: 590px;
+            font-size: 17px;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 13px 21px;
+            border-radius: 7px;
+            font-weight: 700;
+            margin: 4px 8px 4px 0;
+            transition: 0.2s;
+        }
+
+        .button-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .button-primary:hover {
+            background: #107b69;
+            transform: translateY(-2px);
+        }
+
+        .button-secondary {
+            border: 1px solid var(--border);
+            background: white;
+            color: var(--dark);
+        }
+
+        .button-secondary:hover {
+            border-color: var(--accent);
+        }
+
+        .portrait {
+            background: var(--accent-light);
+            border: 8px solid white;
+            box-shadow: 0 20px 60px rgba(23, 43, 53, 0.10);
+            border-radius: 25px;
+            overflow: hidden;
+            min-height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .portrait img {
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+        }
+
+        .portrait-fallback {
+            display: none;
+            font-size: 90px;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        /* GENERAL SECTIONS */
+
+        section.content-section {
+            padding: 85px 0;
+        }
+
+        .section-heading {
+            font-size: clamp(30px, 4vw, 42px);
+            margin-bottom: 18px;
+            letter-spacing: -1px;
+        }
+
+        .section-intro {
+            max-width: 680px;
+            margin-bottom: 35px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 60px;
+        }
+
+        .about-highlight {
+            background: var(--accent-light);
+            border-radius: 15px;
+            padding: 28px;
+            color: var(--dark);
+        }
+
+        .about-highlight strong {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .soft-section {
+            background: #edf3f4;
+        }
+
+        /* SKILLS */
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 13px;
+            padding: 28px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(23, 43, 53, 0.07);
+        }
+
+        .card-icon {
+            font-size: 27px;
+            margin-bottom: 14px;
+        }
+
+        .card h3 {
+            font-size: 19px;
+            margin-bottom: 15px;
+        }
+
+        ul.skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 7px 0;
+            border-bottom: 1px solid #f0f1f3;
+        }
+
+        .skill-list li::before {
+            content: "✓ ";
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        /* EXPERIENCE */
+
+        .timeline {
+            max-width: 850px;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 155px 1fr;
+            gap: 25px;
+            padding: 28px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .timeline-date {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .timeline-content h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content h4 {
+            color: var(--text);
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        /* EDUCATION AND LANGUAGES */
+
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .info-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 14px;
+            border: 1px solid var(--border);
+        }
+
+        .info-item h3 {
+            font-size: 17px;
+            margin-bottom: 6px;
+        }
+
+        .language-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .language-level {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* PROJECTS */
+
+        .project-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 13px;
+            overflow: hidden;
+        }
+
+        .project-banner {
+            min-height: 135px;
+            display: grid;
+            place-items: center;
+            background: var(--accent-light);
+            color: var(--accent);
+            font-size: 34px;
+            font-weight: 800;
+        }
+
+        .project-body {
+            padding: 23px;
+        }
+
+        .project-body h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .project-body p {
+            font-size: 14px;
+        }
+
+        /* CONTACT */
+
+        .contact-section {
+            background: var(--dark);
+            color: #d7e0e3;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            color: white;
+        }
+
+        .contact-section .section-intro {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .contact-links a {
+            border: 1px solid #52666d;
+            padding: 12px 20px;
+            border-radius: 7px;
+            color: white;
+        }
+
+        .contact-links a:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        footer {
+            padding: 24px;
+            text-align: center;
+            background: #102128;
+            color: #b8c7cb;
+            font-size: 13px;
+        }
+
+        /* MOBILE RESPONSIVE DESIGN */
+
+        @media (max-width: 800px) {
+            .nav-links {
+                gap: 12px;
+                font-size: 12px;
+            }
+
+            .hero-grid,
+            .about-grid,
+            .two-columns {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .hero {
+                padding: 65px 0;
+            }
+
+            .portrait {
+                max-width: 330px;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .about-grid {
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            nav {
+                padding: 15px 0;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .nav-links {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 12px 16px;
+            }
+
+            .hero h1 {
+                letter-spacing: -1px;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            section.content-section {
+                padding: 60px 0;
+            }
+
+            .portrait img {
+                height: 300px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <div class="top-container">
 
-    <h1> I'm Hamzah.</h1>
-    <h2 id="Top-Intro">a semi-professional Video Editor <br> & Graphics Designer.</h2>
-    <img class="tree-1" src="IMAGES/palm-trees.png" height="300px" width="300px" alt="palmtrees-img">
-    <img class="mountain-img" src="IMAGES/Mountain.png" height="300px" width="600px" alt="mountain-img">
-    <img class="tree-2" src="IMAGES/palm-trees.png" height="300px" width="300px" alt="palmtrees-img">
-  </div>
-  <div class="middle-container">
-    <div class="profile">
-      <img src="IMAGES/Hamza.png.png" height="200px" width="200px" alt="Hamzah-png">
-      <h2>Hello.</h2>
-      <p class="intro">I am a semi-professional Video Editor and Graphics Designer. I also have experties in HTML &
-        CSS.
-    </div>
-    <hr>
-    <div class="skills">
-      <div class="skill-row">
-        <h2>My Skills.</h2>
-        <img class="skill-1" src="IMAGES/skilll-sets.gif" height="270px" width="300px" alt="video-editing-png">
-        <h3>Adobe Premiere & InDesign</h3>
-        <p>I have edited talk shows, montage videos, created book covers, flyers etc.</p>
-        <h3>Adobe Photoshop & Illustration</h3>
-        <p>I have edited lot's of thumbnails and pictures, made different companies logos, vector arts etc.</p>
-      </div>
+<header>
+    <nav class="container">
+        <a href="#home" class="logo">Hamzah<span>.</span></a>
 
-      <hr>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact" class="nav-contact">Contact</a>
+        </div>
+    </nav>
+</header>
 
-      <div class="skill-row">
-        <h2>My Education</h2>
-        <img class="skill-2" src="IMAGES/graduation.gif" height="270px" width="300px" alt="Study">
-        <h3>Matric and Intermediate</h3>
-        <p>Matric from I.M.S.B, G-9/1 (2014) <br>
-          I.com part-1 from I.M.C.B, H-8/4  (2015) <br>
-          I.com Part-2 from I.M.C.B, F-10/4 (2016)</p>
-        <h3>Bachelors </h3>
-        <p>B.Com from A.I.O.U, Islamabad (2020)</p>
-      </div>
+<main>
 
-      <hr>
+    <!-- HOME -->
 
-      <div class="experience-row">
-        <h2>My Experience</h2>
-        <img src="IMAGES/Experience.png" height="250px" width="300px" alt="Experience" style="margin-bottom: 30px;">
-        <h3>Class Attendant / Accountant in KIPS Academy</h3>
-        <p>In 2017, I started the job in KIPS as a class attendant and an Accountant. I have learned how to manage
-          the
-          files and paper work there. I also learned communication skills and the method of dealing with the students.
-        </p>
-        <h3>Dth News Channel </h3>
+    <section class="hero" id="home">
+        <div class="container hero-grid">
 
-        <p>
-          After KIPS, I started a Job in DTH News as a video editor. DTH News is a professional web channel of talk
-          shows. In this channel, I’ve learned to edit outdoor shows, indoor shows, chroma key, etc.
-        </p>
+            <div>
+                <p class="eyebrow">PERSONAL & PROFESSIONAL PORTFOLIO</p>
 
-        <h3>Strawberry Sports</h3>
+                <h1>Hi, I'm <span class="accent">Hamzah.</span></h1>
 
-        <p>
-          After Job at DTH News. I started the job in Strawberry Sports. I usually edit sports content there and
-          make new designs of thumbnails and creative logos with the help of Adobe Photoshop and Illustrator. I am
-          still working there as a video editor and Graphics
-          designer.
-        </p>
+                <h2>Guest Services Professional & Creative Media Enthusiast</h2>
 
-      </div>
-    </div>
+                <p class="hero-description">
+                    I have experience in hostel reception, guest support,
+                    video editing, and graphic design. I enjoy working with
+                    people, communicating across cultures, solving problems,
+                    and developing new professional skills.
+                </p>
 
-    <hr>
+                <a href="#experience" class="button button-primary">
+                    Explore My Experience ↓
+                </a>
 
-    <div class="contact-me">
-      <h2 id="Last-Msg">Get in Touch</h2>
-      <p>Send me a feedback on my socials below</p>
+                <a href="#contact" class="button button-secondary">
+                    Contact Me
+                </a>
+            </div>
 
-      <a class="btn" href="mailto:hamza660ti@email.com">CONTACT ME</a>
-    </div>
-  </div>
+            <div class="portrait">
+                <img
+                    src="IMAGES/Hamza.png.png"
+                    alt="Hamzah's portrait"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                >
+                <div class="portrait-fallback">H</div>
+            </div>
 
+        </div>
+    </section>
 
-  <div class="bottom-container">
-    <a class="footer-link" href="https://www.linkedin.com/in/mr-hamzah-8581a5216"><i class="fab fa-linkedin"></i>  LinkedIn</a>
-    <a class="footer-link" href="https://www.facebook.com/profile.php?id=100010592532276"><i class="fab fa-facebook"></i>  Facebook</a>
-    <a class="footer-link" href="https://youtube.com/c/RockNationnhb/videos"><i class="fab fa-youtube"></i>  Youtube</a>
-    <p class="copyright">© 2021 Hamzah's Website. <br> All Rights Reserverd </p>
-  </div>
+    <!-- ABOUT -->
 
+    <section class="content-section" id="about">
+        <div class="container about-grid">
+
+            <div>
+                <p class="eyebrow">01 / ABOUT ME</p>
+                <h2 class="section-heading">A little about me.</h2>
+            </div>
+
+            <div>
+                <p>
+                    I am a motivated professional with experience in
+                    reception operations, guest services, video editing,
+                    and graphic design. My different work experiences have
+                    helped me develop communication, organization,
+                    teamwork, creativity, and problem-solving skills.
+                </p>
+
+                <br>
+
+                <p>
+                    I value professionalism, attention to detail, and
+                    positive interactions with people. I am interested in
+                    continuing to learn, expanding my skills, and
+                    contributing to an international working environment.
+                </p>
+
+                <br>
+
+                <div class="about-highlight">
+                    <strong>My professional approach</strong>
+                    People-focused service, creative thinking,
+                    dependable teamwork, and continuous learning.
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+
+    <section class="content-section soft-section" id="skills">
+        <div class="container">
+
+            <p class="eyebrow">02 / WHAT I BRING</p>
+            <h2 class="section-heading">Skills & Strengths.</h2>
+
+            <p class="section-intro">
+                A combination of guest-service experience, creative
+                abilities, and transferable professional skills.
+            </p>
+
+            <div class="card-grid">
+
+                <article class="card">
+                    <div class="card-icon">✦</div>
+                    <h3>Reception & Guest Services</h3>
+
+                    <ul class="skill-list">
+                        <li>Guest check-in and check-out</li>
+                        <li>Reservation handling</li>
+                        <li>Guest enquiries and assistance</li>
+                        <li>Customer communication</li>
+                        <li>Guest-service support</li>
+                    </ul>
+                </article>
+
+                <article class="card">
+                    <div class="card-icon">▧</div>
+                    <h3>Creative & Digital Media</h3>
+
+                    <ul class="skill-list">
+                        <li>Video editing</li>
+                        <li>Graphic design</li>
+                        <li>Thumbnails and visual content</li>
+                        <li>Typography and layouts</li>
+                        <li>HTML and CSS fundamentals</li>
+                    </ul>
+                </article>
+
+                <article class="card">
+                    <div class="card-icon">↗</div>
+                    <h3>Professional Skills</h3>
+
+                    <ul class="skill-list">
+                        <li>Communication</li>
+                        <li>Teamwork and collaboration</li>
+                        <li>Organization and time management</li>
+                        <li>Problem-solving</li>
+                        <li>Adaptability and multitasking</li>
+                    </ul>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+
+    <section class="content-section" id="experience">
+        <div class="container">
+
+            <p class="eyebrow">03 / CAREER JOURNEY</p>
+            <h2 class="section-heading">Work Experience.</h2>
+
+            <div class="timeline">
+
+                <article class="timeline-item">
+                    <div class="timeline-date">2025 – Present</div>
+
+                    <div class="timeline-content">
+                        <h3>Receptionist</h3>
+                        <h4>A&O Hostel Stuttgart</h4>
+
+                        <p>
+                            Support reception operations, guest check-ins
+                            and check-outs, reservation-related tasks,
+                            guest enquiries, and customer assistance.
+                            Develop communication, organization, and
+                            problem-solving skills while working in an
+                            international hospitality environment.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="timeline-item">
+                    <div class="timeline-date">2019 – 2022</div>
+
+                    <div class="timeline-content">
+                        <h3>Video Editor & Graphic Designer</h3>
+                        <h4>Strawberry Sports</h4>
+
+                        <p>
+                            Created sports-related video content,
+                            thumbnails, logos, and visual designs.
+                            Worked with digital media and developed
+                            experience in visual storytelling and
+                            creative content production.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="timeline-item">
+                    <div class="timeline-date">2018 – 2019</div>
+
+                    <div class="timeline-content">
+                        <h3>Video Editor</h3>
+                        <h4>DTH News Channel</h4>
+
+                        <p>
+                            Worked on editing indoor and outdoor shows
+                            and supporting the production of digital
+                            video content.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="timeline-item">
+                    <div class="timeline-date">2017</div>
+
+                    <div class="timeline-content">
+                        <h3>Class Attendant / Accountant</h3>
+                        <h4>KIPS Academy</h4>
+
+                        <p>
+                            Gained experience in administrative support,
+                            file management, paperwork, communication,
+                            and dealing with students.
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION AND LANGUAGES -->
+
+    <section class="content-section soft-section" id="education">
+        <div class="container two-columns">
+
+            <div>
+                <p class="eyebrow">04 / EDUCATION</p>
+                <h2 class="section-heading">Education.</h2>
+
+                <div class="info-item">
+                    <h3>Bachelor's Studies</h3>
+                    <p>Interdisciplinary American Studies</p>
+                    <p>Eberhard Karls University of Tübingen</p>
+                    <p>2025 – Present</p>
+                </div>
+
+                <div class="info-item">
+                    <h3>Bachelor of Commerce (B.Com)</h3>
+                    <p>Allama Iqbal Open University</p>
+                    <p>2019 – 2021</p>
+                </div>
+
+                <div class="info-item">
+                    <h3>Intermediate</h3>
+                    <p>Islamabad Model College, H-8/4</p>
+                    <p>2014 – 2016</p>
+                </div>
+            </div>
+
+            <div>
+                <p class="eyebrow">05 / COMMUNICATION</p>
+                <h2 class="section-heading">Languages.</h2>
+
+                <div class="info-item">
+                    <div class="language-row">
+                        <strong>Urdu</strong>
+                        <span class="language-level">C2</span>
+                    </div>
+
+                    <div class="language-row">
+                        <strong>English</strong>
+                        <span class="language-level">C1</span>
+                    </div>
+
+                    <div class="language-row">
+                        <strong>German</strong>
+                        <span class="language-level">A2.1</span>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <h3>Continuous Development</h3>
+                    <p>
+                        Building language skills and developing
+                        professional experience in an international
+                        environment.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+
+    <section class="content-section" id="projects">
+        <div class="container">
+
+            <p class="eyebrow">06 / MY WORK</p>
+            <h2 class="section-heading">Projects & Portfolio.</h2>
+
+            <p class="section-intro">
+                This section can showcase examples of your work,
+                creative projects, and professional achievements.
+                Add your real project links when they are ready.
+            </p>
+
+            <div class="card-grid">
+
+                <article class="project-card">
+                    <div class="project-banner">▶</div>
+
+                    <div class="project-body">
+                        <h3>Video Editing</h3>
+                        <p>
+                            Showcase selected video edits, sports
+                            highlights, or other media projects.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-banner">✳</div>
+
+                    <div class="project-body">
+                        <h3>Graphic Design</h3>
+                        <p>
+                            Showcase original thumbnails, posters,
+                            logos, and digital designs.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-banner">＋</div>
+
+                    <div class="project-body">
+                        <h3>Professional Development</h3>
+                        <p>
+                            Add relevant training, certifications,
+                            achievements, and other professional work.
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+
+    <section class="content-section contact-section" id="contact">
+        <div class="container">
+
+            <p class="eyebrow">07 / GET IN TOUCH</p>
+            <h2 class="section-heading">Let's Connect.</h2>
+
+            <p class="section-intro">
+                Interested in connecting professionally or discussing
+                an opportunity? Feel free to contact me.
+            </p>
+
+            <div class="contact-links">
+
+                <a href="mailto:hamza660ti@email.com">
+                    Email Me
+                </a>
+
+                <a
+                    href="https://www.linkedin.com/in/mr-hamzah-8581a5216"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    LinkedIn ↗
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 Hamzah | Professional Portfolio</p>
+    <p>Built with HTML and CSS.</p>
+</footer>
 
 </body>
+</html>
